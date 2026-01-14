@@ -1,6 +1,10 @@
 import streamlit as st
 import re
+import os 
+from dotenv import load_dotenv 
 from agents import get_pro_agent, get_con_agent, get_judge_agent
+
+load_dotenv()
 
 # 1. Page Config (Wide mode is still best for 3 columns)
 st.set_page_config(page_title="AI Debate Arena", page_icon="🗣️", layout="wide")
@@ -46,14 +50,14 @@ with col_btn1:
         judge_a = get_judge_agent()
         
         with st.status("Agents are debating...", expanded=True) as status:
-            st.write("Proponent is formulating argument...")
+            st.write("Pro Agent is formulating argument...")
             p_res = clean_text(pro_a.run(f"Topic: {st.session_state.topic}").content)
             
-            st.write("Opponent is preparing rebuttal...")
+            st.write("Con Agent is preparing rebuttal...")
             c_res = clean_text(con_a.run(f"Rebut this: {p_res}").content)
             
             st.write("Judge is evaluating...")
-            j_res = clean_text(judge_a.run(f"Judge this debate: \nPro: {p_res}\nCon: {c_res}").content)
+            j_res = clean_text(judge_a.run(f"Judge this debate: \nPro Agent: {p_res}\nCon Agent: {c_res}").content)
             
             status.update(label="Debate Round Complete!", state="complete", expanded=False)
             

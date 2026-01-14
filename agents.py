@@ -5,12 +5,13 @@ from agno.models.groq import Groq
 
 load_dotenv()
 
-# Agent 1: The Proponent
+# Agent 1: Pro Agent
 def get_pro_agent():
     return Agent(
         name="Pro-Debater",
         role="Argue strongly in FAVOR of the topic",
-        model=Groq(id="llama-3.3-70b-versatile"),
+        # Added api_key here
+        model=Groq(id="llama-3.3-70b-versatile", api_key=os.getenv("GROQ_API_KEY")),
         instructions=[
             "Provide a strong, persuasive argument.",
             "STRICT LIMIT: Keep your response under 200 words.", 
@@ -20,12 +21,12 @@ def get_pro_agent():
         markdown=True
     )
 
-# Agent 2: The Opponent
+# Agent 2: Con Agent
 def get_con_agent():
     return Agent(
         name="Con-Debater",
         role="Argue strongly AGAINST the topic",
-        model=Groq(id="llama-3.3-70b-versatile"),
+        model=Groq(id="llama-3.3-70b-versatile", api_key=os.getenv("GROQ_API_KEY")),
         instructions=[
             "Identify flaws in the proponent's logic.",
             "STRICT LIMIT: Keep your response under 200 words.", 
@@ -40,13 +41,14 @@ def get_judge_agent():
     return Agent(
         name="The Judge",
         role="A detailed and decisive debate judge",
-        model=Groq(id="qwen/qwen3-32b"),
+        # Added api_key here
+        model=Groq(id="qwen/qwen3-32b", api_key=os.getenv("GROQ_API_KEY")),
         instructions=[
             "Provide a balanced evaluation of both sides.",
             "Length: Aim for about 100-150 words (more detailed than before).",
             "Use this structure:",
             "### 📊 Scorecard",
-            "**Pro:** X/10 | **Con:** Y/10",
+            "**Pro Agent:** X/10 | **Con Agent:** Y/10",
             "### 🔍 Analysis",
             "Explain specifically what made one side more convincing than the other.",
             "### 🏆 FINAL VERDICT",
