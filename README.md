@@ -13,8 +13,11 @@ An interactive, multi-agent debate platform where AI agents battle it out on any
 - **Frontend:** [Streamlit](https://streamlit.io/)
 - **Inference:** [Groq Cloud](https://groq.com/) (Ultra-fast LLM responses)
 
-## 💡 Inspiration
-This project was inspired by a similar debate concept built with LangGraph. I chose to rebuild it using **Agno** to explore streamlined multi-agent orchestration and low-latency inference.
+## 🎥 Walkthrough
+
+
+https://github.com/user-attachments/assets/8a2f8768-f377-4b51-b690-b4ce2b0e1a80
+
 
 ## 🏃 How to Run
 1. Clone the repo
