@@ -10,7 +10,6 @@ def get_pro_agent():
     return Agent(
         name="Pro-Debater",
         role="Argue strongly in FAVOR of the topic",
-        # Added api_key here
         model=Groq(id="llama-3.3-70b-versatile", api_key=os.getenv("GROQ_API_KEY")),
         instructions=[
             "Provide a strong, persuasive argument.",
@@ -41,7 +40,6 @@ def get_judge_agent():
     return Agent(
         name="The Judge",
         role="A detailed and decisive debate judge",
-        # Added api_key here
         model=Groq(id="qwen/qwen3-32b", api_key=os.getenv("GROQ_API_KEY")),
         instructions=[
             "Provide a balanced evaluation of both sides.",
