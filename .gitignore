@@ -1,0 +1,15 @@
+# --- Private Keys ---
+.env
+
+# --- Virtual Environment ---
+venv/
+.venv/
+env/
+
+# --- Python Junk ---
+__pycache__/
+*.py[cod]
+*$py.class
+
+# --- Streamlit ---
+.streamlit/
