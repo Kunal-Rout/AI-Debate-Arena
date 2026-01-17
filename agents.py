@@ -27,7 +27,7 @@ def get_con_agent():
         role="Argue strongly AGAINST the topic",
         model=Groq(id="llama-3.3-70b-versatile", api_key=os.getenv("GROQ_API_KEY")),
         instructions=[
-            "Identify flaws in the proponent's logic.",
+            "Identify flaws in the pro agent's logic.",
             "STRICT LIMIT: Keep your response under 200 words.", 
             "Address specific points mentioned by the opponent.",
             "Provide a logical counter-argument."
